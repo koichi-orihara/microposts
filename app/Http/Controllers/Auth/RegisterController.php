@@ -29,6 +29,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
+     
+    //ユーザ登録が完了すると、ログイン状態になった上で、指定のリダイレクト先へ飛ぶようになってる。
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
@@ -38,6 +40,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        // ゲストにだけユーザ登録やログインを実行させるため guest ミドルウェアを指定
         $this->middleware('guest');
     }
 
