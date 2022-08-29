@@ -9,6 +9,7 @@
                 </div>
                 <div>
                     {{ $favorite->content }}
+                    {{ $favorite->user_id }}
                 </div>
             </div>
             @if (!Auth::user()->is_favorited($favorite->id))
@@ -24,6 +25,13 @@
                 @method('delete')
                 <button>お気に入り解除</button>
             </form>
+            @endif
+            <!--自分の投稿場合削除できる-->
+            @if (Auth::id() == $favorite->user_id)
+                {{-- 投稿削除ボタンのフォーム --}}
+                {!! Form::open(['route' => ['microposts.destroy', $favorite->id], 'method' => 'delete']) !!}
+                {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
+                {!! Form::close() !!}
             @endif
         </li>
     @endforeach
