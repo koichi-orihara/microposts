@@ -22,6 +22,8 @@
                             {!! Form::close() !!}
                         @endif
                     </div>
+                    {{-- お気に入り／お気に入り削除ボタン --}}
+                    @include('favorite_microposts.favorite_microposts_button')
                 </div>
             </li>
         @endforeach
